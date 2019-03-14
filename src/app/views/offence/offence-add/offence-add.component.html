@@ -1,0 +1,147 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+          <!-- form content -->
+         
+  <div class="row">
+
+    <div class="col-sm-12">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card" px-lg-5 pt-0>
+              <div class="card-header" style="background-color:#87CEFA; text-align: center;">
+                  <div>
+                      <h6>Complete and submit the form to create a new Offence</h6>
+                  </div>
+                  <div class="pull-right">
+                      <button class="btn btn-sm btn-info" style="width:100px" (click)="goBack()"><i class="fa fa-reply"></i></button>
+                  </div>
+              </div>
+                
+                <div class="card-body">
+                  <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
+                      <div class="form-group row">
+                            <label class="col-md-3 col-form-label" for="offender_type">Offender Type</label>
+                            <div class="col-md-9">
+                              <select id="offender_type" formControlName="offender_type" name="offender_type" class="form-control">
+                                <option value="">Please select</option>
+                                <option value="DRIVER">Driver</option>
+                                <option value="STAFF">Staff</option>
+                              </select>
+                            </div>
+                      </div>
+
+                      <div class="form-group row">
+                        <label class="col-md-3 col-form-label" for="offender_id">Offender ID</label>
+                        <div class="col-md-9">
+                          <input type="text" id="offender_id" formControlName="offender_id" name="offender_id" class="form-control" placeholder="Offender ID">
+                          <span class="help-block">Enter the Offender ID</span>
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                          <label class="col-md-3 col-form-label" for="offender_id">Offender ID</label>
+                          <div class="col-md-9">
+                            <input type="text" id="offender_id" formControlName="offender_id" name="offender_id" class="form-control" placeholder="Offender ID">
+                            <span class="help-block">Enter the Offender ID</span>
+                          </div>
+                        </div>
+                      <div class="form-group row">
+                        <label class="col-md-3 col-form-label" for="offence_date">Offence Date</label>
+                        <div class="col-md-9">
+                          <input type="date" id="offence_date" formControlName="offence_date" name="offence_date" class="form-control">
+                          <span class="help-block">Please enter the date of the offence</span>
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                          <label class="col-md-3 col-form-label" for="description">Description</label>
+                          <div class="col-md-9">
+                            <textarea id="description" formControlName="description" name="description" rows="5" class="form-control" placeholder="Description Please"></textarea>
+                          </div>
+                      </div>
+                     <div class="form-group row">
+                            <label class="col-md-3 col-form-label" for="offence_status">Offence Status</label>
+                            <div class="col-md-9">
+                              <select id="offence_status" formControlName="offence_status" name="offence_status" class="form-control">
+                                <option value="">Please select</option>
+                                <option value="PENDING">Pending</option>
+                                <option value="ARBITRATED">Arbitrated</option>
+                              </select>
+                            </div>
+                      </div>
+                      <div class="form-group row">
+                              <label class="col-md-3 col-form-label" for="verdict">Verdict</label>
+                              <div class="col-md-9">
+                                <select id="verdict" formControlName="verdict" name="verdict" class="form-control">
+                                  <option value="">Please select</option>
+                                  <option value="INNOCENT">Innocent</option>
+                                  <option value="GUILTY">Guilty</option>
+                                </select>
+                              </div>
+                      </div>
+                      <div class="form-group row">
+                                <label class="col-md-3 col-form-label" for="verdict_by">Verdict By</label>
+                                <div class="col-md-9">
+                                  <input type="text" id="verdict_by" formControlName="verdict_by" name="verdict_by" class="form-control" placeholder="Verdict By">
+                                </div>
+                      </div>
+                      <div class="form-group row">
+                        <label class="col-md-3 col-form-label" for="verdict_date">Verdict Date</label>
+                        <div class="col-md-9">
+                          <input class="form-control" id="verdict_date" formControlName="verdict_date" type="date" name="verdict_date" placeholder="date">
+                          <span class="help-block">Please enter a verdict date</span>
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                          <label class="col-md-3 col-form-label" for="verdict_remark">Verdict Remark</label>
+                          <div class="col-md-9">
+                            <textarea id="verdict_remark" formControlName="verdict_remark" name="verdict_remark" rows="5" class="form-control" placeholder="Verdict Remark..."></textarea>
+                          </div>
+                      </div>
+                      <div class="form-group row">
+                            <label class="col-md-3 col-form-label" for="fine">Fine</label>
+                            <div class="col-md-9">
+                              <input type="number" id="fine" formControlName="fine" name="fine" class="form-control" placeholder="Fine">
+                              <span class="help-block">Enter the amount of money fined</span>
+                            </div>
+                      </div>  
+                      <div class="form-group row">
+                        <label class="col-md-3 col-form-label" for="discipline">Discipline</label>
+                        <div class="col-md-9">
+                          <select id="discipline" formControlName="discipline" name="discipline" class="form-control">
+                            <option value="">Please select</option>
+                            <option value="WARNING">Warning</option>
+                            <option value="SUSPENSION">Suspension</option>
+                            <option value="DISMISSED">Dismissed</option>
+                          </select>
+                        </div>
+                      </div>
+                        <div class="form-group row">
+                          <label class="col-md-3 col-form-label" for="suspension">Suspension</label>
+                          <div class="col-md-9">
+                            <input class="form-control" id="suspension" formControlName="suspension" type="text" name="suspension" placeholder="Suspension">
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label class="col-md-3 col-form-label" for="payment">Payment</label>
+                          <div class="col-md-9">
+                            <input class="form-control" id="payment" formControlName="payment" type="text" name="payment" placeholder="payment">
+                          </div>
+                        </div>
+                                              
+                      <div class="card-footer" class="col-sm-12">
+                        <div class="pull-center">
+                          <button type="submit" class="btn btn-info btn-block"><i class="fa fa-dot-circle-o"></i> SUBMIT</button>
+                        </div>
+                        <div class = "pull-center">
+                          <button type="reset" class="btn btn-danger btn-block"><i class="fa fa-ban"></i> RESET</button>
+                        </div>
+                      </div>
+                  </form>
+                </div>
+               
+            </div>
+        </div>
+      </div>
+    </div>
+  </div><!--/.row-->

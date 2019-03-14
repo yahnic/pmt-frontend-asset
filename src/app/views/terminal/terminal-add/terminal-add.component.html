@@ -1,0 +1,247 @@
+<div class="animated fadeIn">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="card">
+          <div class="card-header">
+            <strong>Add Terminal</strong>
+            <small> New</small>
+            <div class="pull-right">
+                <button class="btn btn-sm btn-info" style="width:100px" (click)="goBack()"><i class="fa fa-reply"></i></button>
+            </div>
+          </div>
+          <div class="card-body">
+  
+            <!-- form content -->
+            <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
+            <div class="row">
+  
+            <div class="col-sm-6">
+              <div class="card">
+                <div class="card-header">
+                  Complete and submit the form to create a new Terminal for PMT and PML
+                </div>
+                <div class="card-body">
+  
+                    <div class="form-group">
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text">Name</span>
+                        </div>
+                        <input type="text" id="name" formControlName="name" name="name" class="form-control">
+                        <div class="input-group-append">
+                          <span class="input-group-text"><i class="fa fa-user"></i></span>
+                        </div>
+                      </div>
+                    </div>
+  
+                    <div class="form-group">
+                        <div class="input-group">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text">Manager</span>
+                          </div>
+                          <input type="text" id="manager" formControlName="manager" name="manager" class="form-control">
+                          <div class="input-group-append">
+                            <span class="input-group-text"><i class="fa fa-user"></i></span>
+                          </div>
+                        </div>
+                      </div>
+  
+                      <div class="form-group">
+                          <div class="input-group">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text">Phone</span>
+                            </div>
+                            <input type="tel" id="phone" formControlName="phone" name="phone" class="form-control">
+                            <div class="input-group-append">
+                              <span class="input-group-text"><i class="fa fa-phone"></i></span>
+                            </div>
+                          </div>
+                        </div>
+  
+                        <div class="form-group">
+                            <div class="input-group">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text">Quarter</span>
+                              </div>
+                              <input type="text" id="quarter" formControlName="quarter" name="quarter" class="form-control">
+                              <div class="input-group-append">
+                                <span class="input-group-text"><i class="fa fa-user"></i></span>
+                              </div>
+                            </div>
+                          </div>
+  
+                      <div class="form-group">
+                          <div class="input-group">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text">City</span>
+                            </div>
+                            <ng-select id="city" formControlName="city" name="city" 
+                              [allowClear]="true" [multiple]="false"
+                              [items]="cities"
+                              (data)="refreshValue($event)"
+                              (selected)="selected($event)"
+                              (removed)="removed($event)"
+                              (typed)="typed($event)"
+                              placeholder="No city selected">
+                            </ng-select>
+                            <div class="input-group-append">
+                              <span class="input-group-text"><i class="fa fa-map-o"></i></span>
+                            </div>
+                          </div>
+                        </div>
+  
+                        <div class="form-group">
+                          <div class="input-group">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text">County</span>
+                            </div>
+                            <ng-select id="county" formControlName="county" name="county" 
+                              [allowClear]="true" [multiple]="false"
+                              [items]="counties"
+                              (data)="refreshValue($event)"
+                              (selected)="selected($event)"
+                              (removed)="removed($event)"
+                              (typed)="typed($event)"
+                              placeholder="No county selected">
+                            </ng-select>
+                            <div class="input-group-append">
+                              <span class="input-group-text"><i class="fa fa-map-marker"></i></span>
+                            </div>
+                          </div>
+                        </div>
+  
+                        <div class="form-group">
+                            <div class="input-group">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text">Address</span>
+                              </div>
+                              <input type="text" id="address" formControlName="address" name="address" class="form-control">
+                              <div class="input-group-append">
+                                <span class="input-group-text"><i class="fa fa-envelope"></i></span>
+                              </div>
+                            </div>
+                          </div>
+  
+  
+                </div>
+              </div>
+            </div>
+  
+            <div class="col-sm-6">
+              <div class="card">
+                <div class="card-body">
+  
+  
+                    <div class="form-group">
+                        <div class="input-group">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text">Longitude</span>
+                          </div>
+                          <input type="number" id="longitude" formControlName="longitude" name="longitude" class="form-control">
+                          <div class="input-group-append">
+                            <span class="input-group-text"><i class="fa fa-user"></i></span>
+                          </div>
+                        </div>
+                      </div>
+  
+                    <div class="form-group">
+                        <div class="input-group">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text">Latitude</span>
+                          </div>
+                          <input type="number" id="latitude" formControlName="latitude" name="latitude" class="form-control">
+                          <div class="input-group-append">
+                            <span class="input-group-text"><i class="fa fa-user"></i></span>
+                          </div>
+                        </div>
+                      </div>
+  
+                        <div class="form-group">
+                            <div class="input-group">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text">Capacity</span>
+                              </div>
+                              <input type="number" id="capacity" formControlName="capacity" name="capacity" class="form-control">
+                              <div class="input-group-append">
+                                <span class="input-group-text"><i class="fa fa-user"></i></span>
+                              </div>
+                            </div>
+                          </div>
+  
+                    <div class="form-group">
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text">PML Operational</span>
+                        </div>
+                        <input type="text" id="is_pml_operational" formControlName="is_pml_operational" name="is_pml_operational" class="form-control" autocomplete="email">
+                        <div class="input-group-append">
+                          <span class="input-group-text"><i class="fa fa-envelope"></i></span>
+                        </div>
+                      </div>
+                    </div>
+  
+                    <div class="form-group">
+                        <div class="input-group">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text">PMT Operational</span>
+                          </div>
+                          <input type="text" id="is_pmt_operational" formControlName="is_pmt_operational" name="is_pmt_operational" class="form-control" autocomplete="email">
+                          <div class="input-group-append">
+                            <span class="input-group-text"><i class="fa fa-envelope"></i></span>
+                          </div>
+                        </div>
+                      </div>
+  
+                    <div class="form-group">
+                        <div class="input-group">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text">PMT Online</span>
+                          </div>
+                          <input type="text" id="is_pmt_online" formControlName="is_pmt_online" name="is_pmt_online" class="form-control" autocomplete="email">
+                          <div class="input-group-append">
+                            <span class="input-group-text"><i class="fa fa-envelope"></i></span>
+                          </div>
+                        </div>
+                      </div>
+  
+                      <div class="form-group">
+                          <div class="input-group">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text">Flw Subaccount</span>
+                            </div>
+                            <input type="text" id="flw_subaccount_id" formControlName="flw_subaccount_id" name="flw_subaccount_id" class="form-control" autocomplete="email">
+                            <div class="input-group-append">
+                              <span class="input-group-text"><i class="fa fa-envelope"></i></span>
+                            </div>
+                          </div>
+                        </div>
+  
+                    <div class="form-group">
+                        <div class="input-group">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text">Photo</span>
+                          </div>
+                          <input type="text" id="photo" formControlName="photo" name="photo" class="form-control" autocomplete="email">
+                          <div class="input-group-append">
+                            <span class="input-group-text"><i class="fa fa-envelope"></i></span>
+                          </div>
+                        </div>
+                      </div>
+  
+                    <div class="form-group form-actions pull-right">
+                      <button type="submit" class="btn btn-md btn-primary">Submit</button>
+                    </div>
+                </div>
+              </div>
+            </div>
+  
+          </div><!--/.row-->
+        </form>
+            <!--/. form content -->
+  
+          </div>
+        </div>
+      </div>
+    </div><!--/.row-->
+  </div>
+  

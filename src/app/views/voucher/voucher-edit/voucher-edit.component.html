@@ -1,0 +1,275 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-header">
+          <strong>Add Voucher</strong>
+          <small style="color:red"> New</small>
+          <div class="pull-right">
+              <button class="btn btn-sm btn-info" style="width:100px" (click)="goBack()"><i class="fa fa-reply"></i></button>
+          </div>
+        </div>
+        <div class="card-body" style="background-color:skyblue">
+            <div class="card-header" style="background-color:skyblue">
+                <p>Complete and submit the form to create a new Voucher for PMT and PML</p>
+              </div>
+          <!-- form content -->
+          <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+          <div class="row">
+          <div class="col-sm-6">
+            <div class="card">
+              
+              <div class="card-body">
+                  <div class="form-group row">
+                      <label class="col-md-5 col-form-label" for="staff_id">Staff ID</label>
+                      <div class="col-md-7">
+                        <ng-select id="staff_id" formControlName="staff_id" name="staff_id" class="custom" placeholder="No Staff selected"
+                            [items]="staff" bindValue="id" bindLabel="text" [virtualScroll]="true" >
+                        </ng-select>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-md-5 col-form-label" for="driver_id">Driver ID</label>
+                      <div class="col-md-7">
+                        <ng-select id="driver_id" formControlName="driver_id" name="driver_id" placeholder="No Driver selected"
+                            [items]="driver"
+                            bindLabel="name"
+                            [virtualScroll]="true"
+                            bindValue="id">
+                    </ng-select>
+                      </div>
+                    </div>
+                <div class="form-group row">
+                    <label class="col-md-5 col-form-label" for="transaction_code">Transaction Code</label>
+                    <div class="col-md-7">
+                      <input type="text" id="transaction_code" formControlName="transaction_code" name="transaction_code" class="form-control" placeholder="Transaction Code">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                      <label class="col-md-5 col-form-label" for="beneficiary">Beneficiary</label>
+                      <div class="col-md-7">
+                        <select type="text" id="beneficiary" formControlName="beneficiary" name="beneficiary" class="form-control" placeholder="Beneficiary">
+                            <option value="">Select beneficiary</option>
+                            <option value="STAFF">STAFF</option>
+                            <option value="DRIVER">DRIVER</option>
+                          </select>
+                      </div>
+                    </div>  
+                  <div class="form-group row">
+                    <label class="col-md-5 col-form-label" for="terminal_id">Terminal ID</label>
+                    <div class="col-md-7">
+                      <input type="text" id="terminal_id" formControlName="terminal_id" name="terminal_id" class="form-control" placeholder="Terminal Id">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-md-5 col-form-label" for="subsidiary">Subsidiary</label>
+                    <div class="col-md-7">
+                      <input type="text" id="subsidiary" formControlName="subsidiary" name="subsidiary" class="form-control" placeholder="Subsidiary">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-md-5 col-form-label" for="amount">Amount</label>
+                    <div class="col-md-7">
+                      <input type="text" id="amount" formControlName="amount" name="amount" class="form-control" placeholder="Amount">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-md-5 col-form-label" for="voucher_stage_id">Voucher Stage ID</label>
+                    <div class="col-md-7">
+                      <ng-select id="voucher_stage_id" formControlName="voucher_stage_id" name="voucher_stage_id" placeholder="No No VoucherStage selected"
+                          [items]="voucher_stage"
+                          bindLabel="officer"
+                          [virtualScroll]="true"
+                          bindValue="id">
+                  </ng-select>
+                    </div>
+                  </div>
+                <div class="form-group row">
+                  <label class="col-md-5 col-form-label" for="account_heading_id">Account Heading ID</label>
+                  <div class="col-md-7">
+                    <ng-select id="account_heading_id" formControlName="account_heading_id" name="account_heading_id" placeholder="No AccountHeading ID selected"
+                        [items]="account_heading"
+                        bindLabel="name"
+                        [virtualScroll]="true"
+                        bindValue="id">
+                </ng-select>
+                </div>
+              </div>
+
+                <!-- example -->
+                <!-- <ng-select [items]="cities" formControlName="selectedCity" bindLabel="name" class="custom" placeholder="Select city">
+                  </ng-select>
+                  <p>
+                      Selected city: {{ selectedCity | json }}
+                  </p> -->
+                  <!--/.example -->
+                  
+                  <div class="form-group row">
+                      <label class="col-md-5 col-form-label" for="related_voucher_id">Related Voucher Id</label>
+                      <div class="col-md-7">
+                        <input type="text" id="related_voucher_id" formControlName="related_voucher_id" name="related_voucher_id" class="form-control" placeholder="Related Voucher ID">
+                      </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-md-5 col-form-label" for="voucher_type">Voucher Type</label>
+                    <div class="col-md-7">
+                      <select type="text" id="voucher_type" formControlName="voucher_type" name="voucher_type" class="form-control" placeholder="Voucher Type">
+                          <option value="">Select Voucher Type</option>
+                          <option value="PAYMENT">PAYMENT</option>
+                          <option value="ADVANCE">ADVANCE</option>
+                          <option value="RETIREMENT">RETIREMENT</option>
+                        </select>
+                    </div>
+                  </div> 
+                  <div class="form-group row">
+                      <label class="col-md-5 col-form-label" for="processing">Processing</label>
+                      <div class="col-md-7">
+                        <select type="text" id="processing" formControlName="processing" name="processing" class="form-control" placeholder="Processing">
+                            <option value="">Select Processing Status</option>
+                            <option value="PENDING">PENDING</option>
+                            <option value="COMPLETE">COMPLETE</option>
+                            <option value="CANCEL">CANCEL</option>
+                          </select>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-5 col-form-label" for="pay_channel">Pay Channel</label>
+                        <div class="col-md-7">
+                          <select type="text" id="pay_channel" formControlName="pay_channel" name="pay_channel" class="form-control" placeholder="Pay Channel">
+                              <option value="">Select Pay Channel</option>
+                              <option value="CASH">CASH</option>
+                              <option value="CHEQUE">CHEQUE</option>
+                              <option value="BANKTRANSFER">BANKTRANSFER</option>
+                            </select>
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                          <label class="col-md-5 col-form-label" for="acknowledge_by">Acknowledge By</label>
+                          <div class="col-md-7">
+                            <input type="text" id="acknowledge_by" formControlName="acknowledge_by" name="acknowledge_by" class="form-control" placeholder="Acknowledge By">
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-5 col-form-label" for="acknowledge_date">Acknowledge Date</label>
+                            <div class="col-md-7">
+                              <input type="date" id="acknowledge_date" formControlName="acknowledge_date" name="acknowledge_date" class="form-control" placeholder="Acknowledge Date">
+                            </div>
+                        </div> 
+                        <div class="form-group row">
+                            <label class="col-md-5 col-form-label" for="endorsed_by">Endorsed By</label>
+                            <div class="col-md-7">
+                              <input type="text" id="endorsed_by" formControlName="endorsed_by" name="endorsed_by" class="form-control" placeholder="Endorsed By">
+                            </div>
+                          </div>
+                          
+                        
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="card">
+              <div class="card-body">
+                  <div class="form-group row">
+                      <label class="col-md-5 col-form-label" for="endorsed_date">Endorsed Date</label>
+                      <div class="col-md-7">
+                        <input type="date" id="endorsed_date" formControlName="endorsed_date" name="endorsed_date" class="form-control" placeholder="Endorsed Date">
+                      </div>
+                  </div>
+                  <div class="form-group row">
+                      <label class="col-md-5 col-form-label" for="authorized_by">Authorized By</label>
+                      <div class="col-md-7">
+                        <input type="text" id="authorized_by" formControlName="authorized_by" name="authorized_by" class="form-control" placeholder="Authorized By">
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-5 col-form-label" for="authorized_date">Authorized Date</label>
+                        <div class="col-md-7">
+                          <input type="date" id="authorized_date" formControlName="authorized_date" name="authorized_date" class="form-control" placeholder="Authorized Date">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-5 col-form-label" for="approved_by">Approved By</label>
+                        <div class="col-md-7">
+                          <input type="text" id="approved_by" formControlName="approved_by" name="approved_by" class="form-control" placeholder="Approved By">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                          <label class="col-md-5 col-form-label" for="approved_date">Approved Date</label>
+                          <div class="col-md-7">
+                            <input type="date" id="approved_date" formControlName="approved_date" name="approved_date" class="form-control" placeholder="Approved Date">
+                          </div>
+                      </div>
+                      <div class="form-group row">
+                          <label class="col-md-5 col-form-label" for="paid_by">Paid By</label>
+                          <div class="col-md-7">
+                            <input type="text" id="paid_by" formControlName="paid_by" name="paid_by" class="form-control" placeholder="Paid By">
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-5 col-form-label" for="paid_date">Paid Date</label>
+                            <div class="col-md-7">
+                              <input type="date" id="paid_date" formControlName="paid_date" name="paid_date" class="form-control" placeholder="Approved Date">
+                            </div>
+                        </div> 
+                        <div class="form-group row">
+                            <label class="col-md-5 col-form-label" for="received_by">Received By</label>
+                            <div class="col-md-7">
+                              <input type="text" id="received_by" formControlName="received_by" name="received_by" class="form-control" placeholder="Received By">
+                            </div>
+                          </div>
+                          <div class="form-group row">
+                              <label class="col-md-5 col-form-label" for="received_date">Received Date</label>
+                              <div class="col-md-7">
+                                <input type="date" id="received_date" formControlName="received_date" name="received_date" class="form-control" placeholder="Received Date">
+                              </div>
+                          </div> 
+                          <div class="form-group row">
+                              <label class="col-md-5 col-form-label" for="checked_by">Checked By</label>
+                              <div class="col-md-7">
+                                <input type="text" id="checked_by" formControlName="checked_by" name="checked_by" class="form-control" placeholder="Checked By">
+                              </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-md-5 col-form-label" for="checked_date">Checked Date</label>
+                                <div class="col-md-7">
+                                  <input type="date" id="checked_date" formControlName="checked_date" name="checked_date" class="form-control" placeholder="Checked Date">
+                                </div>
+                            </div> 
+                            <div class="form-group row">
+                                <label class="col-md-5 col-form-label" for="audited_by">Audited By</label>
+                                <div class="col-md-7">
+                                  <input type="text" id="audited_by" formControlName="audited_by" name="audited_by" class="form-control" placeholder="Audited By">
+                                </div>
+                              </div>
+                              <div class="form-group row">
+                                  <label class="col-md-5 col-form-label" for="audited_date">Audited Date</label>
+                                  <div class="col-md-7">
+                                    <input type="date" id="audited_date" formControlName="audited_date" name="audited_date" class="form-control" placeholder="Audited Date">
+                                  </div>
+                              </div> 
+                <div class="form-group row">
+                  <label class="col-md-3 col-form-label" for="description">Description</label>
+                  <div class="col-md-9">
+                    <textarea id="description" formControlName="description" name="description" rows="4" class="form-control" placeholder="Description"></textarea>
+                  </div>
+              </div>
+                                             
+                  <div class="form-group form-actions pull-right">
+                    <button type="submit" class="btn btn-md btn-primary">Submit</button>
+                  </div>
+                  <div class="form-group form-actions pull-left">
+                      <button type="reset" class="btn btn-md btn-primary">Reset</button>
+                    </div>
+              </div>
+            </div>
+          </div>
+        </div><!--/.row-->
+      </form>
+      <div class="card-footer">
+          <p>Please check the information correctly before you hit submit........</p>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div><!--/.row-->
+</div>

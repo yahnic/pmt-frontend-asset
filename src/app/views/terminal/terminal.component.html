@@ -1,0 +1,132 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-sm-6 col-md-2">
+      <div class="card text-white bg-info">
+        <div class="card-body">
+          <div class="h1 text-muted text-right mb-4">
+            <i class="icon-people"></i>
+          </div>
+          <div class="h4 mb-0">87.500</div>
+          <small class="text-muted text-uppercase font-weight-bold">Visitors</small>
+          <div class="progress progress-white progress-xs mt-3">
+            <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+        </div>
+      </div>
+    </div><!--/.col-->
+    <div class="col-sm-6 col-md-2">
+      <div class="card text-white bg-success">
+        <div class="card-body">
+          <div class="h1 text-muted text-right mb-4">
+            <i class="icon-user-follow"></i>
+          </div>
+          <div class="h4 mb-0">385</div>
+          <small class="text-muted text-uppercase font-weight-bold">New Clients</small>
+          <div class="progress progress-white progress-xs mt-3">
+            <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+        </div>
+      </div>
+    </div><!--/.col-->
+    <div class="col-sm-6 col-md-2">
+      <div class="card text-white bg-warning">
+        <div class="card-body">
+          <div class="h1 text-muted text-right mb-4">
+            <i class="icon-basket-loaded"></i>
+          </div>
+          <div class="h4 mb-0">1238</div>
+          <small class="text-muted text-uppercase font-weight-bold">Products sold</small>
+          <div class="progress progress-white progress-xs mt-3">
+            <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+        </div>
+      </div>
+    </div><!--/.col-->
+    <div class="col-sm-6 col-md-2">
+      <div class="card text-white bg-primary">
+        <div class="card-body">
+          <div class="h1 text-muted text-right mb-4">
+            <i class="icon-pie-chart"></i>
+          </div>
+          <div class="h4 mb-0">28%</div>
+          <small class="text-muted text-uppercase font-weight-bold">Returning</small>
+          <div class="progress progress-white progress-xs mt-3">
+            <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+        </div>
+      </div>
+    </div><!--/.col-->
+    <div class="col-sm-6 col-md-2">
+      <div class="card text-white bg-danger">
+        <div class="card-body">
+          <div class="h1 text-muted text-right mb-4">
+            <i class="icon-speedometer"></i>
+          </div>
+          <div class="h4 mb-0">5:34:11</div>
+          <small class="text-muted text-uppercase font-weight-bold">Avg. Time</small>
+          <div class="progress progress-white progress-xs mt-3">
+            <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+        </div>
+      </div>
+    </div><!--/.col-->
+    <div class="col-sm-6 col-md-2">
+      <div class="card text-white bg-info">
+        <div class="card-body">
+          <div class="h1 text-muted text-right mb-4">
+            <i class="icon-speech"></i>
+          </div>
+          <div class="h4 mb-0">972</div>
+          <small class="text-muted text-uppercase font-weight-bold">Comments</small>
+          <div class="progress progress-white progress-xs mt-3">
+            <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+        </div>
+      </div>
+    </div><!--/.col-->
+  </div><!--/.row-->
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          PMT &amp; PML Terminals
+          <div class="pull-right">
+              <button class="btn btn-sm btn-info" style="width:100px" (click)="terminalAdd()">  Add Terminal</button>
+          </div>
+        </div>
+        <div class="card-body">
+          
+          <br>
+          <table class="table table-hover table-striped table-condensed table-responsive-sm table-outline mb-0"  *ngIf="success">
+            <thead class="thead-light">
+            <tr>
+              <th class="text-center">SN</th>
+              <th>Name</th>
+              <th>Address</th>
+              <th class="text-center"><i class="icon-people"></i></th>
+              <th width='20%' class="text-center">Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr  *ngFor="let record of terminals; let i = index">
+              <td>{{ i + 1 }}</td>
+              <td>{{ record.name }}</td>
+              <td>{{ record.address }}</td>
+              <td>
+                  <div class="small text-muted">{{ record.manager }}</div>
+                  <strong>{{ record.phone }}</strong>
+              </td>
+              <td class="text-center">
+                  <button type="button" (click)="terminalDetail(record)" class="btn btn-sm btn-info"><i class="fa fa-windows"></i></button>
+                  <button type="button" (click)="terminalEdit(record)" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></button>
+                  <button type="button" (click)="terminalDelete(record)" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
+              </td>
+            </tr>
+            </tbody>
+        </table>
+        </div>
+      </div>
+    </div><!--/.col-->
+  </div><!--/.row-->
+</div>
