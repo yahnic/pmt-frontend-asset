@@ -43,6 +43,8 @@ export const navItems = [
     ]
   },
   { name: 'Terminal', url: '/terminal', icon: 'icon-calculator' },
+  { name: 'Asset', url: '/asset', icon: 'icon-calculator'},
+  { name: 'Asset Categories', url: '/asset-category', icon: 'icon-bell'},
   { name: 'Staff', url: '/staff', icon: 'icon-calculator' },
   { name: 'Profile', url: '/profile', icon: 'icon-calculator' },
   { name: 'Vehicle', url: '/vehicle', icon: 'icon-calculator' },
@@ -54,11 +56,8 @@ export const navItems = [
   { name: 'Spares', url: '/spares', icon: 'icon-calculator' },
   { name: 'Accident', url: '/accident', icon: 'icon-calculator' },
   { name: 'Offence', url: '/offence', icon: 'icon-calculator' },
-  { name: 'Bank Register', url: '/bank-register', icon: 'icon-calculator' },
-  { name: 'Voucher', url: '/voucher', icon: 'icon-calculator' },
   { name: 'Rating', url: '/rating', icon: 'icon-calculator' },
   { name: 'Widgets', url: '/widgets', icon: 'icon-calculator' },
-  { name: 'Voucher Stage', url: '/voucher-stage', icon: 'icon-calculator' },
 
   { divider: true },
 

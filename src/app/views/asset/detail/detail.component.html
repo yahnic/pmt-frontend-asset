@@ -1,4 +1,3 @@
-<script src="edit/edit.component.ts"></script>
 <div class="animated fadeIn">
   <div class="row">
     <div class="col-sm-6 col-md-2">
@@ -91,44 +90,51 @@
     <div class="col-md-12">
       <div class="card">
         <div class="card-header">
-          PMT &amp; PML Assignment
+          <h2>{{ name || ' Asset Detail' }}</h2>
           <div class="pull-right">
-              <button class="btn btn-sm btn-info" style="width:100px" (click)="assignmentAdd()">  Add Assignment</button>
+              <button class="btn btn-sm btn-primary" style="width:100px" (click)="assetEdit(asset)"> Edit</button>
+              <button class="btn btn-sm btn-info" style="width:100px" (click)="goBack()"><i class="fa fa-reply"></i></button>
           </div>
         </div>
         <div class="card-body">
 
           <br>
-          <table class="table table-hover table-striped table-condensed table-responsive-sm table-outline mb-0"  *ngIf="success">
+          <table class="table table-responsive-sm table-hover table-outline mb-0">
             <thead class="thead-light">
-            <tr>
-              <th class="text-center">SN</th>
-              <th>Vehicle</th>
-              <th>User</th>
-              <th>Staff</th>
-              <th>Driver</th>
-              <th>Asset</th>
-              <th class="text-center"><i class="icon-people"></i></th>
-              <th width='20%' class="text-center">Action</th>
-            </tr>
+              <tr><th>Field</th><th>Value</th></tr>
             </thead>
             <tbody>
-            <tr  *ngFor="let record of  assignments; let i = index">
-              <td>{{ i + 1 }}</td>
-              <td *ngIf="record.vehicle_id">{{ record.vehicle_id.surname + ' ' + record.staff_id.other_name }}</td>
-              <td>{{ record.user_type }}</td>
-              <td *ngIf="record.staff_id">{{ record.staff_id.surname + ' ' + record.staff_id.other_name }}</td>
-              <td *ngIf="record.driver_id">{{ record.driver_id.surname + ' ' + record.driver_id.other_name }}</td>
-              <td>{{ record.asset_type }}</td>
-              <td>{{ record.user_type }}</td>
-              <td class="text-center">
-                  <button type="button" (click)="assignmentDetail(record)" class="btn btn-sm btn-info"><i class="fa fa-windows"></i></button>
-                  <button type="button" (click)="assignmentEdit(record)" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></button>
-                  <button type="button" (click)="assignmentDelete(record)" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
-              </td>
-            </tr>
+              <tr><th>Label</th><td>{{ label || '' }}</td></tr>
+              <tr><th>Serial</th><td>{{ serial || '' }}</td></tr>
+              <tr><th>Name</th><td>{{ name || '' }}</td></tr>
+              <tr><th>Type</th><td>{{ type || '' }}</td></tr>
+              <tr><th>Make</th><td>{{ make || '' }}</td></tr>
+              <tr><th>Measure</th><td>{{ measure || '' }}</td></tr>
+              <tr><th>Asset Category</th><td>{{ asset_category_id || '' }}</td></tr>
+              <tr><th>Description</th><td>{{ description || '' }}</td></tr>
+              <tr><th>Terminal</th><td>{{ terminal_id || '' }}</td></tr>
+              <tr><th>Subsidiary</th><td>{{ subsidiary || '' }}</td></tr>
+              <tr><th>Location</th><td>{{ location || '' }}</td></tr>
+              <tr><th>Consumable</th><td>{{ is_consumable || '' }}</td></tr>
+              <tr><th>Usability</th><td>{{ usability || '' }}</td></tr>
+              <tr><th>Worth</th><td>{{ worth || '' }}</td></tr>
+              <tr><th>Staff</th><td>{{ staff_id || '' }}</td></tr>
+              <tr><th>Launch Date</th><td>{{ launch_date || '' }}</td></tr>
+              <tr><th>Expire Date</th><td>{{ expire_date || '' }}</td></tr>
+              <tr><th>Purchase</th><td>{{ purchase_id || '' }}</td></tr>
+              <tr><th>Opening Value</th><td>{{ opening_value || '' }}</td></tr>
+              <tr><th>Closing Value</th><td>{{ closing_value || '' }}</td></tr>
+              <tr><th>Current Value</th><td>{{ current_value || '' }}</td></tr>
+              <tr><th>Salvage Value</th><td>{{ salvage_value || '' }}</td></tr>
+              <tr><th>Subsidiary</th><td>{{ subsidiary || '' }}</td></tr>
+              <tr><th>Photo</th><td>{{ photo || '' }}</td></tr>
+              <tr><th>Lifespan</th><td>{{ lifespan || '' }}</td></tr>
+              <tr><th>Total Depreciable Cost</th><td>{{ total_depreciable_cost || '' }}</td></tr>
+              <tr><th>Depreciation Rate</th><td>{{ depreciation_rate || '' }}</td></tr>
+              <tr><th>Depreciation Expense</th><td>{{ depreciation_expense || '' }}</td></tr>
+              <tr><th>Accumulated Depreciation</th><td>{{ accumulated_depreciation || '' }}</td></tr>
             </tbody>
-        </table>
+          </table>
         </div>
       </div>
     </div><!--/.col-->

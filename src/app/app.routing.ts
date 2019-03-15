@@ -21,6 +21,8 @@ export const routes: Routes = [
       { path: 'base', loadChildren: './views/base/base.module#BaseModule' },
       { path: 'buttons', loadChildren: './views/buttons/buttons.module#ButtonsModule' },
       { path: 'charts', loadChildren: './views/chartjs/chartjs.module#ChartJSModule' },
+      { path: 'asset', loadChildren: './views/asset/asset.module#AssetModule' },
+      { path: 'asset-category', loadChildren: './views/asset-category/asset-category.module#AssetCategoryModule' },
       { path: 'dashboard', loadChildren: './views/dashboard/dashboard.module#DashboardModule' },
       { path: 'icons', loadChildren: './views/icons/icons.module#IconsModule' },
       { path: 'notifications', loadChildren: './views/notifications/notifications.module#NotificationsModule' },
@@ -37,11 +39,7 @@ export const routes: Routes = [
       { path: 'schedule', loadChildren: './views/schedule/schedule.module#ScheduleModule' },
       { path: 'spares', loadChildren: './views/spares/spares.module#SparesModule' },
       { path: 'staff', loadChildren: './views/staff/staff.module#StaffModule' },
-      { path: 'terminal', loadChildren: './views/terminal/terminal.module#TerminalModule' },
       { path: 'vehicle', loadChildren: './views/vehicle/vehicle.module#VehicleModule' },
-      { path: 'bank-register', loadChildren: './views/bank-register/bank-register.module#BankRegisterModule' },
-      { path: 'voucher', loadChildren: './views/voucher/voucher.module#VoucherModule' },
-      { path: 'voucher-stage', loadChildren: './views/voucher-stage/voucher-stage.module#VoucherStageModule' },
     ]
   }
 ];

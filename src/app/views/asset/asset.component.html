@@ -1,4 +1,3 @@
-<script src="edit/edit.component.ts"></script>
 <div class="animated fadeIn">
   <div class="row">
     <div class="col-sm-6 col-md-2">
@@ -91,9 +90,9 @@
     <div class="col-md-12">
       <div class="card">
         <div class="card-header">
-          PMT &amp; PML Assignment
+          PMT &amp; PML Assets
           <div class="pull-right">
-              <button class="btn btn-sm btn-info" style="width:100px" (click)="assignmentAdd()">  Add Assignment</button>
+              <button class="btn btn-sm btn-info" style="width:100px" (click)="assetAdd()">  Add Asset</button>
           </div>
         </div>
         <div class="card-body">
@@ -103,28 +102,24 @@
             <thead class="thead-light">
             <tr>
               <th class="text-center">SN</th>
-              <th>Vehicle</th>
-              <th>User</th>
-              <th>Staff</th>
-              <th>Driver</th>
-              <th>Asset</th>
-              <th class="text-center"><i class="icon-people"></i></th>
+              <th>Name</th>
+              <th>Description</th>
+              <th>Usability</th>
+              <th>Worth</th>
               <th width='20%' class="text-center">Action</th>
             </tr>
             </thead>
             <tbody>
-            <tr  *ngFor="let record of  assignments; let i = index">
+            <tr  *ngFor="let record of assets; let i = index">
               <td>{{ i + 1 }}</td>
-              <td *ngIf="record.vehicle_id">{{ record.vehicle_id.surname + ' ' + record.staff_id.other_name }}</td>
-              <td>{{ record.user_type }}</td>
-              <td *ngIf="record.staff_id">{{ record.staff_id.surname + ' ' + record.staff_id.other_name }}</td>
-              <td *ngIf="record.driver_id">{{ record.driver_id.surname + ' ' + record.driver_id.other_name }}</td>
-              <td>{{ record.asset_type }}</td>
-              <td>{{ record.user_type }}</td>
+              <td>{{ record.name }}</td>
+              <td>{{ record.description }}</td>
+              <td>{{ record.usability }}</td>
+              <td>{{ record.worth }}</td>
               <td class="text-center">
-                  <button type="button" (click)="assignmentDetail(record)" class="btn btn-sm btn-info"><i class="fa fa-windows"></i></button>
-                  <button type="button" (click)="assignmentEdit(record)" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></button>
-                  <button type="button" (click)="assignmentDelete(record)" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
+                  <button type="button" (click)="assetDetail(record)" class="btn btn-sm btn-info"><i class="fa fa-windows"></i></button>
+                  <button type="button" (click)="assetEdit(record)" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></button>
+                  <button type="button" (click)="assetDelete(record)" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
               </td>
             </tr>
             </tbody>

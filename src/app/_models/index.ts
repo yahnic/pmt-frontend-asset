@@ -15,6 +15,4 @@ export * from './terminal';
 export * from './user';
 export * from './vehicle';
 export * from './select-option-interface';
-export * from './bank-register';
-export * from './voucher';
-export * from './voucher-stage';
+export * from './driver';

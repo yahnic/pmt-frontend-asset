@@ -1,0 +1,31 @@
+export class Asset {
+  id: string;
+  label: string;
+  serial: string;
+  name: string;
+  type: string;
+  make: string;
+  measure: string;
+  asset_category_id: object;
+  description: string;
+  terminal_id: object;
+  subsidiary: string;
+  location: string;
+  is_consumable: string;
+  usability: string;
+  worth: string;
+  staff_id: object;
+  launch_date: Date;
+  expire_date: Date;
+  purchase_id: object;
+  opening_value: number;
+  closing_value: number;
+  current_value: number;
+  salvage_value: number;
+  photo: string;
+  lifespan: number;
+  total_depreciable_cost: number;
+  depreciation_rate: number;
+  depreciation_expense: number;
+  accumulated_depreciation: number;
+}

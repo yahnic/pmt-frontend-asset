@@ -1,4 +1,4 @@
-export class Staff {
+export class Driver {
   id: string;
   surname: string;
   other_name: string;

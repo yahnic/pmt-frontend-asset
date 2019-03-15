@@ -1,4 +1,6 @@
-﻿import { Injectable } from '@angular/core';
+﻿import { AssetCategory } from './../_models/asset-category';
+import { Asset } from './../_models/asset';
+import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/index';
 
@@ -17,45 +19,33 @@ import {
     Staff,
     Terminal,
     Vehicle,
-    BankRegister,
-    Voucher,
-    VoucherStage
  } from '../_models';
 import { UtilsService } from './utils.service';
 
-
 const token = window.localStorage.getItem('token');
-let httpOptions;
-if (token) {
-    httpOptions = {
-        headers: new HttpHeaders({
-          'content-type': 'application/json',
-          Authorization: `Bearer ${token}`,
-          'cache-control': 'no-cache',
-        })
-      };
-} else {
-    httpOptions = {
-        headers: new HttpHeaders({
-          'content-type': 'application/json',
-          'cache-control': 'no-cache',
-        })
-      };
-}
-
-
+const httpOptions = {
+  headers: new HttpHeaders({
+    'content-type': 'application/json',
+    Authorization: ` Bearer ${token}`
+  })
+};
 @Injectable({ providedIn: 'root' })
 
 export class ApiService {
-apiUrl =  'https://jibrila.herokuapp.com/api';
-constructor(private http: HttpClient, private utilsService: UtilsService) { }
+  [x: string]: any;
+    constructor(private http: HttpClient, private utilsService: UtilsService) { }
+    apiUrl = 'https://jibrila.herokuapp.com/api';
+   // apiUrl = environment.PEACE_API;
+  retrieveAssignmet(): any {
+    throw new Error('Method not implemented.');
+  }
 
     getAccident(query = '') {
         return this.http.get<ApiResponse>(`${this.apiUrl}/accidents${query}`);
     }
 
     getAssignment(query = '') {
-        return this.http.get<ApiResponse>(`${this.apiUrl}/vehicle-assignments${query}`);
+        return this.http.get<ApiResponse>(`${this.apiUrl}/asset-request-assignments${query}`, httpOptions);
     }
     getMaintenance(query = '') {
         return this.http.get<ApiResponse>(`${this.apiUrl}/pmt-maintenances${query}`);
@@ -64,9 +54,7 @@ constructor(private http: HttpClient, private utilsService: UtilsService) { }
     getOffence(query = '') {
         return this.http.get<ApiResponse>(`${this.apiUrl}/offences${query}`);
     }
-    getBankRegister(query = '') {
-        return this.http.get<ApiResponse>(`${this.apiUrl}/bank-registers${query}`);
-    }
+
     getPmlWaybill(query = '') {
         return this.http.get<ApiResponse>(`${this.apiUrl}/pml-waybills${query}`);
     }
@@ -116,6 +104,87 @@ constructor(private http: HttpClient, private utilsService: UtilsService) { }
         return terminals.filter(obj => obj.id === id);
     }
 
+ // Asset
+
+ retrieveAsset(query = ''): Observable<ApiResponse> {
+  return this.http.get<ApiResponse>(`${this.apiUrl}/assets${query}`);
+}
+
+updateAsset(asset: Asset): Observable<ApiResponse> {
+  const id = asset.id;
+  delete asset.id;
+  const payload = this.utilsService.cleanObject(asset);
+  return this.http.put<ApiResponse>(`${this.apiUrl}/assets/${id}`, payload);
+}
+
+createAsset(asset: Asset): Observable<ApiResponse> {
+  delete asset.id;
+  const payload = this.utilsService.cleanObject(asset);
+  return this.http.post<ApiResponse>(`${this.apiUrl}/assets`, payload);
+}
+
+deleteAsset(id: Asset['id']): Observable<ApiResponse> {
+  return this.http.delete<ApiResponse>(`${this.apiUrl}/assets/${id}`);
+}
+getAsset(assets, id): Asset {
+  return assets.filter(obj => obj.id === id);
+}
+
+   // Asset-Category
+
+ retrieveAssetCategory(query = ''): Observable<ApiResponse> {
+  return this.http.get<ApiResponse>(`${this.apiUrl}/asset-categories${query}`);
+ }
+
+updateAssetCategory(assetcategory: AssetCategory): Observable<ApiResponse> {
+  const id = assetcategory.id;
+  delete assetcategory.id;
+  const payload = this.utilsService.cleanObject(assetcategory);
+  return this.http.put<ApiResponse>(`${this.apiUrl}/asset-categories/${id}`, payload);
+ }
+
+createAssetCategory(assetcategory: AssetCategory): Observable<ApiResponse> {
+  delete assetcategory.id;
+  const payload = this.utilsService.cleanObject(assetcategory);
+  return this.http.post<ApiResponse>(`${this.apiUrl}/asset-categories`, payload);
+}
+
+deleteAssetCategory(id: AssetCategory['id']): Observable<ApiResponse> {
+  return this.http.delete<ApiResponse>(`${this.apiUrl}/asset-categories/${id}`);
+}
+
+  getOneAssetCategory(assetcategory, id): AssetCategory {
+  return assetcategory.filter(obj => obj.id === id);
+  }
+
+  // assignment
+  retrieveAssignment(query = ''): Observable<ApiResponse> {
+      return this.http.get<ApiResponse>(`${this.apiUrl}/asset-request-assignments${query}`);
+  }
+
+  updateAssignment(assignment: Assignment): Observable<ApiResponse> {
+      const id = assignment.id;
+      delete assignment.id;
+      const payload = this.utilsService.cleanObject(assignment);
+      return this.http.put<ApiResponse>(`${this.apiUrl}/asset-request-assignments/${id}`, payload);
+  }
+
+  createAssignment(assignment: Assignment): Observable<ApiResponse> {
+      delete assignment.id;
+      const payload = this.utilsService.cleanObject(assignment);
+      return this.http.post<ApiResponse>(`${this.apiUrl}/asset-request-assignments`, payload);
+  }
+
+  assignmentDelete(id: Assignment['id']): Observable<ApiResponse> {
+      return this.http.delete<ApiResponse>(`${this.apiUrl}/asset-request-assignments/${id}`);
+  }
+  // getAssignment(assignments, id): Assignment {
+  //       return assignments.filter(obj => obj.id === id);
+  //   }
+ getOneAssignment(assignemnts, id): Assignment {
+        return assignemnts.filter(obj => obj.id === id);
+    }
+
     // Vehicle
     getVehicle(query = ''): Observable<ApiResponse> {
         return this.http.get<ApiResponse>(`${this.apiUrl}/vehicles${query}`);
@@ -131,133 +200,4 @@ constructor(private http: HttpClient, private utilsService: UtilsService) { }
     retrieveState(query = ''): Observable<ApiResponse> {
         return this.http.get<ApiResponse>(`${this.apiUrl}/states${query}`);
     }
-
-    // Offence
-    retrieveOffence(query = ''): Observable<ApiResponse> {
-        return this.http.get<ApiResponse>(`${this.apiUrl}/offences${query}`);
-    }
-
-    updateOffence(offence: Offence): Observable<ApiResponse> {
-        const id = offence.id;
-        delete offence.id;
-        const payload = this.utilsService.cleanObject(offence);
-        return this.http.put<ApiResponse>(`${this.apiUrl}/offences/${id}`, payload);
-    }
-
-    createOffence(offence: Offence): Observable<any> {
-        console.log(offence);
-        delete offence.id;
-        const payload = this.utilsService.cleanObject(offence);
-        return this.http.post<ApiResponse>(`${this.apiUrl}/offences`, payload, httpOptions);
-    }
-
-    deleteOffence(id: Offence['id']): Observable<ApiResponse> {
-        return this.http.delete<ApiResponse>(`${this.apiUrl}/offences/${id}`);
-    }
-
-    getOneOffence(offences, id): Offence {
-        return offences.filter(obj => obj.id === id);
-    }
-
-    // Bank - Register
-    retrieveBankRegister(query = ''): Observable<ApiResponse> {
-        return this.http.get<ApiResponse>(`${this.apiUrl}/bank-registers${query}`);
-    }
-    deleteBankRegister(id: BankRegister['id']): Observable<ApiResponse> {
-        return this.http.delete<ApiResponse>(`${this.apiUrl}/bank-registers/${id}`);
-    }
-    createBankRegister(bankRegister: BankRegister): Observable<any> {
-        console.log(bankRegister);
-        delete bankRegister.id;
-        const payload = this.utilsService.cleanObject(bankRegister);
-        return this.http.post<ApiResponse>(`${this.apiUrl}/bank-registers`, payload, httpOptions);
-    }
-    updateBankRegister(bankRegister: BankRegister): Observable<ApiResponse> {
-        const id = bankRegister.id;
-        delete bankRegister.id;
-        const payload = this.utilsService.cleanObject(bankRegister);
-        return this.http.put<ApiResponse>(`${this.apiUrl}/bank-registers/${id}`, payload);
-    }
-    getOneBankRegister(bankRegisters, id): BankRegister {
-        return bankRegisters.filter(obj => obj.id === id);
-    }
-
-    // Voucher
-
-    retrieveVoucher(query = ''): Observable<ApiResponse> {
-         return this.http.get<ApiResponse>(`${this.apiUrl}/vouchers${query}`);
-     }
-     getVoucher(query = '') {
-        return this.http.get<ApiResponse>(`${this.apiUrl}/vouchers${query}`);
-    }
-
-    updateVoucher(voucher: Voucher): Observable<ApiResponse> {
-        const id = voucher.id;
-        delete voucher.id;
-        const payload = this.utilsService.cleanObject(voucher);
-        return this.http.put<ApiResponse>(`${this.apiUrl}/vouchers/${id}`, payload);
-    }
-
-    createVoucher(voucher: Voucher): Observable<any> {
-        console.log(voucher);
-        delete voucher.id;
-        const payload = this.utilsService.cleanObject(voucher);
-        return this.http.post<ApiResponse>(`${this.apiUrl}/vouchers`, payload, httpOptions);
-    }
-
-    deleteVoucher(id: Voucher['id']): Observable<ApiResponse> {
-        return this.http.delete<ApiResponse>(`${this.apiUrl}/vouchers/${id}`);
-    }
-
-    getOneVoucher(vouchers, id): Voucher {
-        return vouchers.filter(obj => obj.id === id);
-    }
-
-    // Voucher Stage
-
-    retrieveVoucherStage(query = ''): Observable<ApiResponse> {
-        return this.http.get<ApiResponse>(`${this.apiUrl}/voucher-stages${query}`);
-    }
-    getVoucherStage(query = '') {
-       return this.http.get<ApiResponse>(`${this.apiUrl}/voucher-stages${query}`);
-   }
-   updateVoucherStage(voucherStage: VoucherStage): Observable<ApiResponse> {
-    const id = voucherStage.id;
-    delete voucherStage.id;
-    const payload = this.utilsService.cleanObject(voucherStage);
-    return this.http.put<ApiResponse>(`${this.apiUrl}/voucher-stages/${id}`, payload);
-}
-
-    createVoucherStage(voucherStage: VoucherStage): Observable<any> {
-    console.log(voucherStage);
-    delete voucherStage.id;
-    const payload = this.utilsService.cleanObject(voucherStage);
-    return this.http.post<ApiResponse>(`${this.apiUrl}/voucher-stages`, payload, httpOptions);
-}
-
-    deleteVoucherStage(id: VoucherStage['id']): Observable<ApiResponse> {
-    return this.http.delete<ApiResponse>(`${this.apiUrl}/voucher-stages/${id}`);
-}
-
-    getOneVoucherStage(voucherStage, id): VoucherStage {
-    return voucherStage.filter(obj => obj.id === id);
-    }
-    // staff
-    retrieveStaff(query = ''): Observable<ApiResponse> {
-        return this.http.get<ApiResponse>(`${this.apiUrl}/staff${query}`);
-    }
-
-    // Driver
-    retrieveDriver(query = ''): Observable<ApiResponse> {
-        return this.http.get<ApiResponse>(`${this.apiUrl}/drivers${query}`);
-    }
-
-    // Account Handing
-    retrieveAccountHeading(query = ''): Observable<ApiResponse> {
-        return this.http.get<ApiResponse>(`${this.apiUrl}/account-headings${query}`);
-    }
-    // VoucherStage
-    // retrieveVoucherStage(query = ''): Observable<ApiResponse> {
-    //     return this.http.get<ApiResponse>(`${this.apiUrl}/voucher-stages${query}`);
-    // }
 }

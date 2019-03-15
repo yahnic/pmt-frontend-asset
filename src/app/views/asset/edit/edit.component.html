@@ -1,0 +1,233 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+          <!-- form content -->
+
+  <div class="row">
+
+    <div class="col-sm-12">
+      <div class="row">
+        <div class="col-md-12">
+            <div class="card" px-lg-5 pt-0>
+              <div class="card-header" style="background-color:#87CEFA; text-align: center;">
+                <div>
+                    <h6>Complete and submit the form to Update an Asset</h6>
+                </div>
+                <div class="pull-right">
+                    <button class="btn btn-sm btn-info" style="width:100px" (click)="goBack()"><i class="fa fa-reply"></i></button>
+                </div>
+            </div>
+                <div class="card-body">
+                  <form [formGroup] = "editForm" (ngSubmit)="onSubmit()">
+                      <div class="form-group row">
+                            <label class="col-md-3 col-form-label" for="label">Label Type</label>
+                            <div class="col-md-9">
+                              <select id="label" formControlName="label" name="label" class="form-control">
+                                <option value="">Please select</option>
+                                <option value="LABEL">Label</option>
+                                <option value="BRACODE">Barcode</option>
+                              </select>
+                            </div>
+                      </div>
+                      <div class="form-group row">
+                        <label class="col-md-3 col-form-label" for="serial">Serial</label>
+                        <div class="col-md-9">
+                          <input type="text" id="serial" formControlName="serial" name="serial" class="form-control" placeholder="Serial">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <div class="input-group">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text">Name</span>
+                          </div>
+                          <input type="text" id="name" formControlName="name" name="name" class="form-control">
+                          <div class="input-group-append">
+                            <span class="input-group-text"><i class="fa fa-user"></i></span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label class="col-md-3 col-form-label" for="type">Type</label>
+                        <div class="col-md-9">
+                          <input type="text" id="type" formControlName="type" name="type" class="form-control" placeholder="type">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label class="col-md-3 col-form-label" for="make">Make</label>
+                        <div class="col-md-9">
+                          <input class="form-control" id="make" formControlName="make" type="text" name="make" placeholder="make">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label class="col-md-3 col-form-label" for="measure">Measure</label>
+                        <div class="col-md-9">
+                          <input class="form-control" id="measure" formControlName="measure" type="text" name="measure" placeholder="measure">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label class="col-md-3 col-form-label" for="asset_category_id">Asset Category</label>
+                        <div class="col-md-9">
+                          <input class="form-control" id="asset_category_id" formControlName="asset_category_id" type="text" name="asset_category_id" placeholder="asset_category_id">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                          <label class="col-md-3 col-form-label" for="description">Description</label>
+                          <div class="col-md-9">
+                            <input class="form-control" id="description" formControlName="description" type="text" name="description" placeholder="description">
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label class="col-md-3 col-form-label" for="terminal_id">Terminal</label>
+                          <div class="col-md-9">
+                            <input class="form-control" id="terminal_id" formControlName="terminal_id" type="text" name="terminal_id" placeholder="terminal_id">
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label class="col-md-3 col-form-label" for="subsidiary">Subsidiary</label>
+                          <div class="col-md-9">
+                            <input class="form-control" id="subsidiary" formControlName="subsidiary" type="text" name="subsidiary" placeholder="subsidiary">
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label class="col-md-3 col-form-label" for="">Location</label>
+                          <div class="col-md-9">
+                            <input class="form-control" id="location" formControlName="location" type="text" name="location" placeholder="location">
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label class="col-md-3 col-form-label" for="is_consumable">Is Consumable</label>
+                          <div class="col-md-9">
+                            <input class="form-control" id="is_consumable" formControlName="is_consumable" type="text" name="is_consumable" placeholder="is_consumable">
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label class="col-md-3 col-form-label" for="usability">Usability</label>
+                          <div class="col-md-9">
+                            <select id="usability" formControlName="usability" name="usability" class="form-control">
+                              <option value="">Please select</option>
+                              <option value="DUTY">Duty</option>
+                              <option value="SCRAP">Scrap</option>
+                              <option value="SHOP">Shop</option>
+                              <option value="SOLID">sold</option>
+                              <option value="DISPOSED">Disposed</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label class="col-md-3 col-form-label" for="worth">Worth</label>
+                          <div class="col-md-9">
+                            <select id="worth" formControlName="worth" name="worth" class="form-control">
+                              <option value="">Please select</option>
+                              <option value="APPRECIATE">Appreciate</option>
+                              <option value="DEPRCIATE">Deprciate</option>
+                            </select>
+                        </div>
+                        <div class="form-group row">
+                          <label class="col-md-3 col-form-label" for="staff_id">Staff</label>
+                          <div class="col-md-9">
+                            <input class="form-control" id="staff_id" formControlName="staff_id" type="text" name="staff_id" placeholder="staff_id">
+                          </div>
+                        </div>
+                        </div>
+                      <div class="form-group row">
+                        <label class="col-md-3 col-form-label" for="launch_date">Launch Date</label>
+                        <div class="col-md-9">
+                          <input type="date" id="launch_date" formControlName="launch_date" name="launch_date" class="form-control">
+                          <span class="help-block">Please enter the date of the Launch</span>
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label class="col-md-3 col-form-label" for="expire_date">Expire Date</label>
+                        <div class="col-md-9">
+                          <input type="date" id="expire_date" formControlName="expire_date" name="expire_date" class="form-control">
+                          <span class="help-block">Please enter the date of the Expire</span>
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                          <label class="col-md-3 col-form-label" for="purchase_id">Purchase Id</label>
+                          <div class="col-md-9">
+                            <textarea id="purchase_id" formControlName="purchase_id" name="purchase_id" rows="5" class="form-control" placeholder="Purchase ID"></textarea>
+                          </div>
+                      </div>
+                      <div class="form-group row">
+                        <label class="col-md-3 col-form-label" for="opening_value">Opening Value</label>
+                        <div class="col-md-9">
+                          <input class="form-control" id="opening_value" formControlName="opening_value" type="text" name="opening_value" placeholder="Opening Value">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label class="col-md-3 col-form-label" for="closing_value">Closing Value</label>
+                        <div class="col-md-9">
+                          <input class="form-control" id="closing_value" formControlName="closing_value" type="text" name="closing_value" placeholder="Closing Value">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                                <label class="col-md-3 col-form-label" for="current_value">Current Value</label>
+                                <div class="col-md-9">
+                                  <input type="text" id="current_value" formControlName="current_value" name="current_value" class="form-control" placeholder="Current Value">
+                                </div>
+                      </div>
+                      <div class="form-group row">
+                          <label class="col-md-3 col-form-label" for="salvage_value">Salvage Value</label>
+                          <div class="col-md-9">
+                            <textarea id="salvage_value" formControlName="salvage_value" name="salvage_value" rows="5" class="form-control" placeholder="Salvage Value"></textarea>
+                          </div>
+                      </div>
+                      <div class="form-group row">
+                        <label class="col-md-3 col-form-label" for="asset_type">Asset Type</label>
+                        <div class="col-md-9">
+                          <select id="asset_type" formControlName="asset_type" name="asset_type" class="form-control">
+                            <option value="">Please select</option>
+                            <option value="PENDING">Pending</option>
+                            <option value="ARBITRATED">Arbitrated</option>
+                          </select>
+                        </div>
+                      <div class="form-group">
+                        <div class="input-group">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text">Photo</span>
+                          </div>
+                          <input type="text" id="photo" formControlName="photo" name="photo" class="form-control" autocomplete="email">
+                          <div class="input-group-append">
+                            <span class="input-group-text"><i class="fa fa-envelope"></i></span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label class="col-md-3 col-form-label" for="lifespan">Lifespan</label>
+                        <div class="col-md-9">
+                          <input class="form-control" id="lifespan" formControlName="lifespan" type="lifespan" name="lifespan" placeholder="lifespan">
+                        </div>
+                      </div>
+                        <div class="form-group row">
+                          <label class="col-md-3 col-form-label" for="total_depreciable_cost">Total Depreciable Cost</label>
+                          <div class="col-md-9">
+                            <input class="form-control" id="total_depreciable_cost" formControlName="total_depreciable_cost" type="text" name="total_depreciable_cost" placeholder="total_depreciable_cost">
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label class="col-md-3 col-form-label" for="depreciation_rate">Depreciation Rate</label>
+                          <div class="col-md-9">
+                            <input class="form-control" id="depreciation_rate" formControlName="depreciation_rate" type="date" name="depreciation_rate" placeholder="depreciation rate">
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label class="col-md-3 col-form-label" for="depreciation_expense">Depreciation Expenset</label>
+                          <div class="col-md-9">
+                            <input class="form-control" id="depreciation_expense" formControlName="depreciation_rate" type="date" name="depreciation_rate" placeholder="depreciation rate">
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label class="col-md-3 col-form-label" for="accumulated_depreciation">Accumulated Depreciation</label>
+                          <div class="col-md-9"></div>
+                            <input class="form-control" id="accumulated_depreciation" formControlName="accumulated_depreciation" type="date" name="accumulated_depreciation" placeholder="accumulated_depreciation">
+                          </div>
+                        </div>
+                      <div class="card-footer" class="col-sm-12">
+                        <div class="pull-center">
+                          <button type="submit" class="btn btn-info btn-block"><i class="fa fa-dot-circle-o"></i> UPDATE</button>
+                        </div>
+                      </div>
+<!-- // Status -->
+

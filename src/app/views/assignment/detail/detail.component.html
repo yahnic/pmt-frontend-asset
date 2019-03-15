@@ -1,4 +1,3 @@
-<script src="edit/edit.component.ts"></script>
 <div class="animated fadeIn">
   <div class="row">
     <div class="col-sm-6 col-md-2">
@@ -91,44 +90,35 @@
     <div class="col-md-12">
       <div class="card">
         <div class="card-header">
-          PMT &amp; PML Assignment
           <div class="pull-right">
-              <button class="btn btn-sm btn-info" style="width:100px" (click)="assignmentAdd()">  Add Assignment</button>
+              <button class="btn btn-sm btn-primary" style="width:100px" (click)="assignmentEdit(assignment)"> Edit</button>
+              <button class="btn btn-sm btn-info" style="width:100px" (click)="goBack()"><i class="fa fa-reply"></i></button>
           </div>
         </div>
         <div class="card-body">
 
           <br>
-          <table class="table table-hover table-striped table-condensed table-responsive-sm table-outline mb-0"  *ngIf="success">
+          <table class="table table-responsive-sm table-hover table-outline mb-0">
             <thead class="thead-light">
-            <tr>
-              <th class="text-center">SN</th>
-              <th>Vehicle</th>
-              <th>User</th>
-              <th>Staff</th>
-              <th>Driver</th>
-              <th>Asset</th>
-              <th class="text-center"><i class="icon-people"></i></th>
-              <th width='20%' class="text-center">Action</th>
-            </tr>
+              <tr><th>Field</th><th>Value</th></tr>
             </thead>
             <tbody>
-            <tr  *ngFor="let record of  assignments; let i = index">
-              <td>{{ i + 1 }}</td>
-              <td *ngIf="record.vehicle_id">{{ record.vehicle_id.surname + ' ' + record.staff_id.other_name }}</td>
-              <td>{{ record.user_type }}</td>
-              <td *ngIf="record.staff_id">{{ record.staff_id.surname + ' ' + record.staff_id.other_name }}</td>
-              <td *ngIf="record.driver_id">{{ record.driver_id.surname + ' ' + record.driver_id.other_name }}</td>
-              <td>{{ record.asset_type }}</td>
-              <td>{{ record.user_type }}</td>
-              <td class="text-center">
-                  <button type="button" (click)="assignmentDetail(record)" class="btn btn-sm btn-info"><i class="fa fa-windows"></i></button>
-                  <button type="button" (click)="assignmentEdit(record)" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></button>
-                  <button type="button" (click)="assignmentDelete(record)" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
-              </td>
-            </tr>
+              <tr><th>Id</th><td>{{ id || '' }}</td></tr>
+              <tr><th>User</th><td>{{ user_type || '' }}</td></tr>
+              <tr><th>Staff ID<th><td>{{ staff || ''}}</td></tr>
+              <tr><th>Driver ID<th><td>{{ driver|| '' }}</td></tr>
+              <tr><th>Request</th><td>{{ request_date || '' }}</td></tr>
+              <tr><th>Task</th><td>{{ task_id || '' }}</td></tr>
+              <tr><th>Asset</th><td>{{ asset_type || '' }}</td></tr>
+              <tr><th>Vehicle ID</th><td>{{ vehicle || '' }}</td></tr>
+              <tr><th>Asset</th><td>{{ asset_id || '' }}</td></tr>
+              <tr><th>Issured</th><td>{{ issured_date || '' }}</td></tr>
+              <tr><th>Issuer</th><td>{{ issued_by || '' }}</td></tr>
+              <tr><th>Returnable</th><td>{{ is_returnable|| '' }}</td></tr>
+              <tr><th>Expected</th><td>{{ expected_returned_date || '' }}</td></tr>
+              <tr><th>Actual</th><td>{{ actual_returned_date || '' }}</td></tr>
             </tbody>
-        </table>
+          </table>
         </div>
       </div>
     </div><!--/.col-->

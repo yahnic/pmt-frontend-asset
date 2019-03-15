@@ -1,0 +1,232 @@
+<div class="animated fadeIn">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="card">
+          <div class="card-header">
+            <strong>Add Assignment</strong>
+            <small> New</small>
+            <div class="pull-right">
+                <button class="btn btn-sm btn-info" style="width:100px" (click)="goBack()"><i class="fa fa-reply"></i></button>
+            </div>
+          </div>
+          <div class="card-body">
+
+            <!-- form content -->
+            <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+            <div class="row">
+
+            <div class="col-sm-6">
+              <div class="card">
+                <div class="card-header">
+                  Complete and submit the form to create a new Assignment for PMT and PML
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <div class="input-group">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text">User Type</span>
+                             <div class="col-md-9">
+                              <select id="user_type" formControlName="user_type" name="user_type" class="form-control">                               <option value="">Please select</option>
+                              <option value="DRIVER">Driver</option>
+                             <option value="STAFF">Staff</option>
+                             </select>
+                         </div>
+                          </div>
+                          <input type="text" id="user_type" formControlName="user_type" name="user_type" class="form-control">
+                          <div class="input-group-append">
+                            <span class="input-group-text"><i class="fa fa-user"></i></span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                          <div class="input-group">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text">Staff ID</span>
+                            </div>
+                            <input type="tel" id="staff_id" formControlName="staff_id" name="staff_id" class="form-control">
+                            <div class="input-group-append">
+                              <span class="input-group-text"><i class="fa fa-phone"></i></span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text">Driver ID</span>
+                              </div>
+                              <input type="text" id="driver_id" formControlName="driver_id" name="driver_id" class="form-control">
+                              <div class="input-group-append">
+                                <span class="input-group-text"><i class="fa fa-user"></i></span>                              </div>
+                            </div>
+                          </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text">Request Date</span>
+                              </div>
+                              <input type="text" id="request_date" formControlName="request_date" name="request_date" class="form-control">
+                              <div class="input-group-append">
+                                <span class="input-group-text"><i class="fa fa-user"></i></span>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <div class="input-group">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text">Asset Type</span>
+                              </div>
+                              <input type="text" id="asset_type" formControlName="asset_type" name="asset_type" class="form-control">
+                              <div class="input-group-append">
+                                <span class="input-group-text"><i class="fa fa-user"></i></span>
+                              </div>
+                            </div>
+                         </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text">Vehicle ID</span>
+                              </div>
+                              <input type="text" id="vehicle_id" formControlName="vehicle_id" name="vehicle_id" class="form-control">
+                              <div class="input-group-append">
+                                <span class="input-group-text"><i class="fa fa-envelope"></i></span>
+                              </div>
+                            </div>
+                          </div>
+                       </div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="card">
+                <div class="card-body">
+                     <div class="form-group">
+                        <div class="input-group">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text">Asset ID</span>
+                          </div>
+                          <input type="number" id="asset_id" formControlName="asset_id" name="asset_id" class="form-control">
+                          <div class="input-group-append">
+                            <span class="input-group-text"><i class="fa fa-user"></i></span>                        </div>
+                        </div>
+                    </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text">issued_date</span>
+                             </div>
+                              <input type="number" id="issued_date" formControlName="issued_date" name="issued_date" class="form-control">
+                              <div class="input-group-append">
+                                <span class="input-group-text"><i class="fa fa-user"></i></span>
+                              </div>
+                            </div>
+                          </div>
+                    <div class="form-group">
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text">Issued By</span>
+                        </div>
+                        <input type="text" id="issued_by" formControlName="issued_by" name="issued_by" class="form-control" autocomplete="email">
+                        <div class="input-group-append">
+                          <span class="input-group-text"><i class="fa fa-envelope"></i></span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text">Issuer Remark</span>
+                          </div>
+                          <input type="text" id="issuer_remark" formControlName="issuer_remark" name="issuer_remark" class="form-control" autocomplete="email">
+                          <div class="input-group-append">
+                            <span class="input-group-text"><i class="fa fa-envelope"></i></span>
+                          </div>
+                     </div>
+                 </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text">Request Status</span>
+                          </div>
+                          <input type="text" id="request_status" formControlName="request_status" name="request_status" class="form-control" autocomplete="email">
+                          <div class="input-group-append">
+                            <span class="input-group-text"><i class="fa fa-envelope"></i></span>
+                          </div>                        </div>
+                     </div>
+
+                      <div class="form-group">
+                          <div class="input-group">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text">Assignment Status</span>
+                            </div>
+                            <input type="text" id="assignment_status" formControlName="assignment_status" name="assignment_status" class="form-control" autocomplete="email">
+                            <div class="input-group-append">
+                              <span class="input-group-text"><i class="fa fa-envelope"></i></span>
+                            </div>
+                          </div>
+                         </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text">Returnable</span>
+                          </div>
+                          <input type="text" id="is_returnable" formControlName="is_returnable" name="is_returnable" class="is_returnable" autocomplete="email">
+                          <div class="input-group-append">                            <span class="input-group-text"><i class="fa fa-envelope"></i></span>
+                          </div>
+                        </div>
+
+                   <div class="form-group">
+                        <div class="input-group">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text">Expected Returned Date</span>
+                          </div>
+                          <input type="text" id="expected_returned_date" formControlName="expected_returned_date" name="expected_returned_date" class="is_returnable" autocomplete="email">
+                          <div class="input-group-append">
+                            <span class="input-group-text"><i class="fa fa-envelope"></i></span>                         </div>
+                        </div>
+                      </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text">Actual Returned Date</span>                        </div>
+                          <input type="text" id="actual_returned_date" formControlName="actual_returned_date" name="actual_returned_date" class="is_returnable" autocomplete="email">
+                          <div class="input-group-append">
+                            <span class="input-group-text"><i class="fa fa-envelope"></i></span>                         </div>
+                        </div>                      </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text">Collected Date</span>                          </div>
+                          <input type="text" id="collected_date" formControlName="collected_date" name="collected_date" class="collected_date" autocomplete="email">
+                          <div class="input-group-append">
+                            <span class="input-group-text"><i class="fa fa-envelope"></i></span>                         </div>
+                        </div>
+                      </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text">Collected By</span>
+                          </div>
+                          <input type="text" id="collected_by" formControlName="collected_by" name="collected_by" class="collected_by" autocomplete="email">
+                          <div class="input-group-append">
+                            <span class="input-group-text"><i class="fa fa-envelope"></i></span>
+                          </div>
+                        </div>
+                      </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text">Collected Remark</span>
+                          </div>
+                          <input type="text" id="collected_remark" formControlName="collected_remark" name="collected_remark" class="collected_remark" autocomplete="email">
+                          <div class="input-group-append">
+                            <span class="input-group-text"><i class="fa fa-envelope"></i></span>
+                      </div>
+                        </div>
+                      </div>
+                    <div class="form-group form-actions pull-right">
+                      <button type="submit" class="btn btn-md btn-primary">Submit</button>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div><!--/.row-->
+      

@@ -3,9 +3,6 @@ import { NgModule } from '@angular/core';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NgSelectModule } from '@ng-select/ng-select';
-import { SelectModule } from 'ng2-select';
-
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
@@ -49,6 +46,7 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
 
 import { JwtInterceptor, ErrorInterceptor } from './_helpers';
+import { SelectModule } from 'ng2-select';
 
 
 @NgModule({
@@ -68,8 +66,6 @@ import { JwtInterceptor, ErrorInterceptor } from './_helpers';
     ReactiveFormsModule,
     HttpClientModule,
     SelectModule,
-    NgSelectModule,
-
   ],
   declarations: [
     AppComponent,
